@@ -67,9 +67,19 @@ const addTodo = (text) => {
   })
 }
 
+const toggleTodo = (id) => {
+  store.dispatch({
+    type: 'TOGGLE_TODO',
+    id
+  })
+}
+
 const render = () => {
   ReactDOM.render(
-    <App {...store.getState()} addTodo={addTodo.bind(this)} />,
+    <App {...store.getState()}
+      addTodo={addTodo}
+      toggleTodo={toggleTodo}
+      />,
     document.getElementById('root')
   )
 }
