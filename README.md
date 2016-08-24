@@ -1,3 +1,8 @@
 # todo-redux
 
-react, redux, meteor 를 사용한 Todo app을 만듭니다.
+Let's make Todo App for learning react, redux, meteor, etc
+
+## To run
+
+- first install [meteor](https://www.meteor.com/)
+- then run `meteor`
