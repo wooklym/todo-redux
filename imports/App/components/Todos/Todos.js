@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDom from 'react-dom'
+import TodoList from './TodoList'
 
 export default class Todos extends React.Component {
   render() {
-    const { todos, visibilityFilter, addTodo, toggleTodo} = this.props
+    const { todos, onTodoClick, visibilityFilter, addTodo, toggleTodo} = this.props
     const visibleTodos = this._getVisibleTodos(todos, visibilityFilter.filter)
 
     return (
@@ -19,25 +20,9 @@ export default class Todos extends React.Component {
           ADD Todo
         </button>
 
-        <ul>
-          {
-            visibleTodos.map(todo =>
-              <li
-                key={todo.id}
-                onClick={() => {
-                  toggleTodo(todo.id)
-                }}
-                style={{
-                  textDecoration:
-                    todo.completed ?
-                      'line-through' :
-                      'none'
-                }}>
-                {todo.text}
-              </li>
-            )
-          }
-        </ul>
+        <TodoList
+          todos={visibleTodos}
+          onTodoClick={toggleTodo} />
       </div>
     )
   }
