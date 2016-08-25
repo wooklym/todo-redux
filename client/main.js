@@ -38,9 +38,9 @@ const todos = (state=[], action) => {
   }
 }
 
-const visibilityFilter = (state={}, action) => {
+const visibilityFilter = (state={filter: 'SHOW_ALL'}, action) => {
   switch (action.type) {
-    case 'VISIBILITY_FILTER_SET':
+    case 'SET_VISIBILITY_FILTER':
       return {
         filter: action.filter
       }
@@ -74,11 +74,19 @@ const toggleTodo = (id) => {
   })
 }
 
+const setVisibilityFilter = (filter) => {
+  store.dispatch({
+    type: 'SET_VISIBILITY_FILTER',
+    filter
+  })
+}
+
 const render = () => {
   ReactDOM.render(
     <App {...store.getState()}
       addTodo={addTodo}
       toggleTodo={toggleTodo}
+      setVisibilityFilter={setVisibilityFilter}
       />,
     document.getElementById('root')
   )
